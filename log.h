@@ -1,50 +1,78 @@
+/** @file log.h
+ *  @author asaeppel4231
+ *  @co
+ *  @version 0.1
+ *  @brief Logging utilities for the ya ecosystem
+ * 
+ * This file provides enhanced logging capabilities to support debugging,
+ * troubleshooting and the detection of race conditions within the ya ecosystem.
+ * It offers lightweight, dependency‑free macros that help track function calls,
+ * parameters and return values during development.
+ */
 #ifndef HELPERS_H
 #define HELPERS_H
 
 #define GENERAL_DEBUG 1
 
 #ifdef NDEBUG
-#undef GENERAL_DEBUG
-#define GENERAL_DEBUG 0
+
+    #undef GENERAL_DEBUG
+    #define GENERAL_DEBUG 0
+
 #endif
 
 #if GENERAL_DEBUG == 1
 
-// NOTE: Requires C99
-#include <stdarg.h>
+    // NOTE: Requires C99
+    #include <stdarg.h>
+    #include <stdio.h>
 
-#define DEBUG "[ DEBUG ]: "
+    #define DEBUG "[ DEBUG ]: "
 
-#define INFO     "[ INFO ]: "
-#define WARN     "[ WARN ]: "
-#define ERROR    "[ ERROR ]: "
-#define CRITICAL "[ CRITICAL ]: "
-#define FATAL    "[ FATAL ]: "
+    #define INFO     "[ INFO ]: "
+    #define WARN     "[ WARN ]: "
+    #define ERROR    "[ ERROR ]: "
+    #define CRITICAL "[ CRITICAL ]: "
+    #define FATAL    "[ FATAL ]: "
 
-#define LOG_DEBUG(formated_string, ...) \
-    printf( "\e[0;32m" DEBUG "\e[0m" formated_string, ##__VA_ARGS__);
+    #define LOG_DEBUG(formated_string, ...) \
+        printf( "\e[0;32m" DEBUG "( " __FILE__ ": " __LINE__ " )" "\e[0m" " " formated_string, ##__VA_ARGS__);
 
-#define LOG_FUNCTION_CALL(fn_name) \
-    LOG_DEBUG(fn_name " was called.\n");
+    #define LOG_FUNCTION_CALL(fn_name) \
+        LOG_DEBUG(#fn_name " was called.\n");
 
-#define LOG_FUNCTION_BACK(fn_name) \
-    LOG_DEBUG("Back in " fn_name "\n");
+    #define LOG_FUNCTION_BACK(fn_name) \
+        LOG_DEBUG("Back in " #fn_name "\n");
 
-#define TYPE_CALL_ADDRESS 0
-#define TYPE_CALL_VALUE   1
+    #define TYPE_CALL_ADDRESS 0
+    #define TYPE_CALL_VALUE   1
 
-#define LOG_PARAMETER(ordinal_number, type_str, type_call, fmt, ...) \
-    LOG_DEBUG(ordinal_number " parameter (type: " type_str ") with %s " fmt, \
-              (type_call == TYPE_CALL_ADDRESS ? "address" : "value"), \
-              ##__VA_ARGS__)
+    #define LOG_PARAMETER(ordinal_number, type_str, type_call, fmt, ...) \
+        LOG_DEBUG(ordinal_number " parameter (type: " type_str ") with %s " fmt, \
+                (type_call == TYPE_CALL_ADDRESS ? "address" : "value"), \
+                ##__VA_ARGS__)
 
-#define LOG_RETURN(type_str, type_call, fmt, ...) \
-    LOG_DEBUG("Returning (type: " type_str ") %s " fmt, \
-              (type_call == TYPE_CALL_ADDRESS ? "address" : "value"), \
-              ##__VA_ARGS__)
+    #define LOG_RETURN(type_str, type_call, fmt, ...) \
+        LOG_DEBUG("Returning (type: " type_str ") %s " fmt, \
+                (type_call == TYPE_CALL_ADDRESS ? "address" : "value"), \
+                ##__VA_ARGS__)
 
-#define TCA TYPE_CALL_ADDRESS
-#define TCV TYPE_CALL_VALUE
+    #define TCA TYPE_CALL_ADDRESS
+    #define TCV TYPE_CALL_VALUE
+
+#else
+
+    #define LOG_DEBUG(formated_string, ...) /* Empty stub macro*/
+    #define LOG_FUNCTION_CALL(fn_name)      /* Empty stub macro*/
+    #define LOG_FUNCTION_BACK(fn_name)      /* Empty stub macro*/
+    #define LOG_PARAMETER(ordinal_number, type_str, type_call, fmt, ...) /* Empty stub macro*/
+    #define LOG_RETURN(type_str, type_call, fmt, ...) /* Empty stub macro*/
+    
+    #define TCA 0
+    #define TCV 0
+
+    #define TYPE_CALL_ADDRESS 0
+    #define TYPE_CALL_VALUE   0
 
 #endif
 
