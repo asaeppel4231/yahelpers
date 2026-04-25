@@ -1,6 +1,6 @@
 /** @file log.h
  *  @author asaeppel4231
- *  @co
+ *  @copyright (c) 2026 asaeppel4231
  *  @version 0.1
  *  @brief Logging utilities for the ya ecosystem
  * 
@@ -27,13 +27,7 @@
     #include <stdarg.h>
     #include <stdio.h>
 
-    #define DEBUG "[ DEBUG ]: "
-
-    #define INFO     "[ INFO ]: "
-    #define WARN     "[ WARN ]: "
-    #define ERROR    "[ ERROR ]: "
-    #define CRITICAL "[ CRITICAL ]: "
-    #define FATAL    "[ FATAL ]: "
+    #include "logconstants.h"
 
     #define LOG_DEBUG(formated_string, ...) \
         printf( "\e[0;32m" DEBUG "( " __FILE__ ": " __LINE__ " )" "\e[0m" " " formated_string, ##__VA_ARGS__);
@@ -48,12 +42,12 @@
     #define TYPE_CALL_VALUE   1
 
     #define LOG_PARAMETER(ordinal_number, type_str, type_call, fmt, ...) \
-        LOG_DEBUG(ordinal_number " parameter (type: " type_str ") with %s " fmt, \
+        LOG_DEBUG(ordinal_number " parameter (type: " #type_str ") with %s " fmt, \
                 (type_call == TYPE_CALL_ADDRESS ? "address" : "value"), \
                 ##__VA_ARGS__)
 
     #define LOG_RETURN(type_str, type_call, fmt, ...) \
-        LOG_DEBUG("Returning (type: " type_str ") %s " fmt, \
+        LOG_DEBUG("Returning (type: " #type_str ") %s " fmt, \
                 (type_call == TYPE_CALL_ADDRESS ? "address" : "value"), \
                 ##__VA_ARGS__)
 
