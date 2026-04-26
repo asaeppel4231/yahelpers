@@ -16,6 +16,8 @@
 
 #ifndef NDEBUG
 
+    /** @brief Prints a debug message if the condition cond is failed
+      */
     #define ASSERT(cond) \
         do{ \
             if(!(cond)){ \
