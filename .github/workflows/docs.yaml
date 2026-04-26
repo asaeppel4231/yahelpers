@@ -21,7 +21,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y doxygen graphviz
-          sudo apt install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+          sudo apt install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex
 
       - name: Build documentation
         run: |
