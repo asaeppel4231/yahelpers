@@ -20,24 +20,37 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y doxygen
+          sudo apt install -y doxygen graphviz
+          sudo apt install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
 
       - name: Build documentation
         run: |
+          # HTML Output verschieben
           if [ "${{ github.ref_name }}" = "master" ]; then
-            doxygen Doxyfile
-            mv site site-master
+            mv doxygen-doc/html site-master
           else
-            doxygen Doxyfile
-            mv site site-dev
+            mv doxygen-doc/html site-dev
+          fi
+
+          # PDF bauen
+          cd doxygen-doc/latex
+          make
+          cd ../..
+
+          # PDF verschieben
+          if [ "${{ github.ref_name }}" = "master" ]; then
+            mkdir -p site-master/pdf
+            mv doxygen-doc/latex/refman.pdf site-master/pdf/yahelpers.pdf
+          else
+            mkdir -p site-dev/pdf
+            mv doxygen-doc/latex/refman.pdf site-dev/pdf/yahelpers.pdf
           fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: |
-            site-master
-            site-dev
+          path: ${{ github.ref_name == 'master' && 'site-master' || 'site-dev' }}
+
 
   deploy:
     needs: build
