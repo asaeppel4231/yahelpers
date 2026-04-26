@@ -1,1 +1,14 @@
 doxygen-doc
+build
+
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache/
+config.log
+config.status
+configure
+install-sh
+missing
+stamp-h1
+yahelpers.pc
