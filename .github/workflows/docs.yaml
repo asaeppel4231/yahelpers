@@ -44,11 +44,12 @@ jobs:
 
       - name: Patch Makefile for XeLaTeX
         run: |
-          cd latex
+          cd doxygen-doc/latex
           sed -i 's/LATEX = latex/LATEX = xelatex/' Makefile
           sed -i 's/refman.dvi/# refman.dvi/' Makefile
           sed -i 's/refman.ps/# refman.ps/' Makefile
           sed -i 's/ps2pdf/# ps2pdf/' Makefile
+          cd ../../
 
       - name: Rename output and build pdf, move pdf
         run: |
