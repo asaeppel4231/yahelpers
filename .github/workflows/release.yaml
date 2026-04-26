@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+
+      # --- Create source tarball ---
+      - name: Create source tarball
+        run: |
+          VERSION="${GITHUB_REF#refs/tags/}"
+          TAR="yahelpers-$VERSION.tar.gz"
+          tar -czf "$TAR" $(git ls-files)
+          echo "TARFILE=$TAR" >> $GITHUB_ENV
+
+      # --- Create GitHub Release ---
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ${{ env.TARFILE }}
+            yahelpers.pdf
+          generate_release_notes: true

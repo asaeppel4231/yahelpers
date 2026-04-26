@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ master, dev ]
+  pull_request:
+    branches: [ master, dev ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y \
+            build-essential \
+            cmake \
+            meson \
+            ninja-build \
+            autoconf automake libtool pkg-config
+
+      # --- CMake Build ---
+      - name: Build with CMake
+        run: |
+          mkdir build-cmake
+          cd build-cmake
+          cmake ..
+          make -j$(nproc)
+
+      # --- Meson Build ---
+      - name: Build with Meson
+        run: |
+          meson setup build-meson
+          meson compile -C build-meson
+
+      # --- Autotools Build ---
+      - name: Build with Autotools
+        run: |
+          autoreconf --install
+          ./configure
+          make -j$(nproc)
