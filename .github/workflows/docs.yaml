@@ -21,64 +21,22 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y doxygen graphviz
-          sudo apt install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex
-
-      - name: Install emoji fonts
-        run: sudo apt-get install -y fonts-noto-color-emoji
-
 
       - name: Build documentation
-        run: |
-          doxygen Doxyfile
+        run: doxygen Doxyfile
 
-      - name: Debug directory structure
+      - name: Move HTML output
         run: |
-          echo "=== ROOT ==="
-          ls -R .
-          echo "=== doxygen-doc ==="
-          ls -R doxygen-doc || echo "doxygen-doc does not exist"
-      
-      - name: Troubleshoot
-        run: |
-          latex --version
-
-      - name: Patch Makefile for XeLaTeX
-        run: |
-          cd doxygen-doc/latex
-          sed -i 's/LATEX = latex/LATEX = xelatex/' Makefile
-          sed -i 's/refman.dvi/# refman.dvi/' Makefile
-          sed -i 's/refman.ps/# refman.ps/' Makefile
-          sed -i 's/ps2pdf/# ps2pdf/' Makefile
-          cd ../../
-
-      - name: Rename output and build pdf, move pdf
-        run: |
-          # Move HTML output
           if [ "${{ github.ref_name }}" = "master" ]; then
             mv doxygen-doc/html site-master
           else
             mv doxygen-doc/html site-dev
           fi
 
-          # Buiĺd PDF
-          cd doxygen-doc/latex
-          make
-          cd ../..
-
-          # Move PDF
-          if [ "${{ github.ref_name }}" = "master" ]; then
-            mkdir -p site-master/pdf
-            mv doxygen-doc/latex/refman.pdf site-master/pdf/yahelpers.pdf
-          else
-            mkdir -p site-dev/pdf
-            mv doxygen-doc/latex/refman.pdf site-dev/pdf/yahelpers.pdf
-          fi
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ github.ref_name == 'master' && 'site-master' || 'site-dev' }}
-
 
   deploy:
     needs: build
@@ -87,3 +45,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
