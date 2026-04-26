@@ -25,19 +25,21 @@ jobs:
 
       - name: Build documentation
         run: |
-          # HTML Output verschieben
+          doxygen Doxyfile
+
+          # Move HTML output
           if [ "${{ github.ref_name }}" = "master" ]; then
             mv doxygen-doc/html site-master
           else
             mv doxygen-doc/html site-dev
           fi
 
-          # PDF bauen
+          # Buiĺd PDF
           cd doxygen-doc/latex
           make
           cd ../..
 
-          # PDF verschieben
+          # Move PDF
           if [ "${{ github.ref_name }}" = "master" ]; then
             mkdir -p site-master/pdf
             mv doxygen-doc/latex/refman.pdf site-master/pdf/yahelpers.pdf
