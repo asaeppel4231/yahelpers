@@ -23,10 +23,24 @@ jobs:
           sudo apt install -y doxygen graphviz
           sudo apt install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex
 
+      - name: Install emoji fonts
+        run: sudo apt-get install -y fonts-noto-color-emoji
+
+
       - name: Build documentation
         run: |
           doxygen Doxyfile
 
+      - name: Patch Makefile for XeLaTeX
+        run: |
+          cd latex
+          sed -i 's/LATEX = latex/LATEX = xelatex/' Makefile
+          sed -i 's/refman.dvi/# refman.dvi/' Makefile
+          sed -i 's/refman.ps/# refman.ps/' Makefile
+          sed -i 's/ps2pdf/# ps2pdf/' Makefile
+
+      - name: Rename output and build pdf, move pdf
+        run: |
           # Move HTML output
           if [ "${{ github.ref_name }}" = "master" ]; then
             mv doxygen-doc/html site-master
