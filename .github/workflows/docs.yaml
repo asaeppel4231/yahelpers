@@ -31,6 +31,17 @@ jobs:
         run: |
           doxygen Doxyfile
 
+      - name: Debug directory structure
+        run: |
+          echo "=== ROOT ==="
+          ls -R .
+          echo "=== doxygen-doc ==="
+          ls -R doxygen-doc || echo "doxygen-doc does not exist"
+      
+      - name: Troubleshoot
+        run: |
+          latex --version
+
       - name: Patch Makefile for XeLaTeX
         run: |
           cd latex
