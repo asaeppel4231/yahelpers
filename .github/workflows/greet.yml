@@ -1,0 +1,25 @@
+name: "Welcome new contributors"
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First interaction
+        uses: actions/first-interaction@v1.3.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: |
+            👋 Welcome to the **yahelpers** repository!
+            Thanks for opening your first issue.
+            Please take a moment to look at our documentation to get a quick overview of the project:
+            👉 <https://github.com/asaeppel4231/yahelpers/blob/master/README.md#documentation>
+          pr-message: |
+            🎉 Thanks for submitting your first pull request!
+            Please ensure that your PR compiles, the CI passes, and the documentation remains up to date.
+            We appreciate your contribution and look forward to reviewing it!
