@@ -9,6 +9,7 @@ Some helper functionality (debug helpers; requires C99) for the ya ecosystem.
 
 ## Table of Contents
 
+- [License](#license)
 - [Documentation](#documentation)
 - [Features](#features)
 - [Minimal Example](#minimal-example)
@@ -19,6 +20,10 @@ Some helper functionality (debug helpers; requires C99) for the ya ecosystem.
   - [Install with Autotools](#install-with-autotools)
 - [Which build system should I use](#which-build-system-should-i-use)
 - [ya‑ ecosystem](#ya--ecosystem)
+
+## License
+
+This repository is under the MPL-2.0 License, see [LICENSE.md](./LICENSE.md)
 
 ## Documentation
 
@@ -151,7 +156,7 @@ For distributions → **Autotools**.
 
 ### *ya- Ecosystem*
 
-yahelpers is part of the emerging YA ecosystem, a collection of small, modular C libraries:
+yahelpers is part of the emerging ya- ecosystem, a collection of small, modular C libraries:
 
 - yahelpers – Debugging helpers
 - yastk – Stack library
