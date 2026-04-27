@@ -28,7 +28,7 @@ AlignConsecutiveDeclarations:
 #  AlignFunctionPointers: false
   PadOperators: false
 AlignConsecutiveMacros:
-  Enabled: true
+  Enabled: false
   AcrossEmptyLines: false
   AcrossComments: false
   AlignCompound: false
@@ -65,7 +65,7 @@ AlignConsecutiveShortCaseStatements:
 #  AlignFunctionDeclarations: false
 #  AlignFunctionPointers: false
 #  PadOperators: false
-AlignEscapedNewlines: Right
+AlignEscapedNewlines: Left
 AlignOperands: Align
 AlignTrailingComments:
   Kind: Always
@@ -117,7 +117,7 @@ BreakAfterJavaFieldAnnotations: false
 #BreakAfterReturnType: None
 BreakArrays: true
 BreakBeforeBinaryOperators: None
-BreakBeforeBraces: Allman
+BreakBeforeBraces: Attach
 BreakBeforeConceptDeclarations: Always
 BreakBeforeInlineASMColon: OnlyMultiline
 #BreakBeforeTemplateCloser: false
@@ -284,7 +284,7 @@ StatementMacros:
   - QT_REQUIRE_VERSION
 TabWidth: 4
 #TableGenBreakInsideDAGArg: DontBreak
-UseTab: Always
+UseTab: Never
 VerilogBreakBetweenInstancePorts: true
 WhitespaceSensitiveMacros:
   - BOOST_PP_STRINGIZE

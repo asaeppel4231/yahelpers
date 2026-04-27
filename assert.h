@@ -16,19 +16,18 @@
 
 #ifndef NDEBUG
 
-    /** @brief Prints a debug message if the condition cond is failed
-      */
-    #define ASSERT(cond) \
-        do{ \
-            if(!(cond)){ \
-                LOG_DEBUG("ASSERT " #cond " failed !!!"); \
-            } \
-        } \
-        while(0) 
+/** @brief Prints a debug message if the condition cond is failed
+ */
+#define ASSERT(cond)                                  \
+    do {                                              \
+        if (!(cond)) {                                \
+            LOG_DEBUG("ASSERT " #cond " failed !!!"); \
+        }                                             \
+    } while (0)
 
 #else
 
-    #define ASSERT(cond) /* Empty stub macro*/
+#define ASSERT(cond) /* Empty stub macro*/
 
 #endif
 
