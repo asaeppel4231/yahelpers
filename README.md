@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/asaeppel4231/yahelpers/actions/workflows/ci.yaml/badge.svg)](https://github.com/asaeppel4231/yahelpers/actions/workflows/ci.yaml)
 [![Build and Deploy Docs](https://github.com/asaeppel4231/yahelpers/actions/workflows/docs.yaml/badge.svg)](https://github.com/asaeppel4231/yahelpers/actions/workflows/docs.yaml)
+[![CodeQL Advanced](https://github.com/asaeppel4231/yahelpers/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/asaeppel4231/yahelpers/actions/workflows/codeql.yml)
+[![Release](https://github.com/asaeppel4231/yahelpers/actions/workflows/release.yaml/badge.svg)](https://github.com/asaeppel4231/yahelpers/actions/workflows/release.yaml)
 
 Some helper functionality (debug helpers; requires C99) for the ya ecosystem.
 
