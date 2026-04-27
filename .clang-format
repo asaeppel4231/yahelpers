@@ -8,63 +8,63 @@ AlignConsecutiveAssignments:
   AcrossEmptyLines: false
   AcrossComments: false
   AlignCompound: false
-  AlignFunctionDeclarations: false
-  AlignFunctionPointers: false
+#  AlignFunctionDeclarations: false
+#  AlignFunctionPointers: false
   PadOperators: true
 AlignConsecutiveBitFields:
   Enabled: false
   AcrossEmptyLines: false
   AcrossComments: false
   AlignCompound: false
-  AlignFunctionDeclarations: false
-  AlignFunctionPointers: false
+#  AlignFunctionDeclarations: false
+#  AlignFunctionPointers: false
   PadOperators: false
 AlignConsecutiveDeclarations:
   Enabled: true
   AcrossEmptyLines: false
   AcrossComments: false
   AlignCompound: false
-  AlignFunctionDeclarations: true
-  AlignFunctionPointers: false
+#  AlignFunctionDeclarations: true
+#  AlignFunctionPointers: false
   PadOperators: false
 AlignConsecutiveMacros:
   Enabled: true
   AcrossEmptyLines: false
   AcrossComments: false
   AlignCompound: false
-  AlignFunctionDeclarations: false
-  AlignFunctionPointers: false
+#  AlignFunctionDeclarations: false
+#  AlignFunctionPointers: false
   PadOperators: false
 AlignConsecutiveShortCaseStatements:
   Enabled: false
   AcrossEmptyLines: false
   AcrossComments: false
-  AlignCaseArrows: false
+#  AlignCaseArrows: false
   AlignCaseColons: false
-AlignConsecutiveTableGenBreakingDAGArgColons:
-  Enabled: false
-  AcrossEmptyLines: false
-  AcrossComments: false
-  AlignCompound: false
-  AlignFunctionDeclarations: false
-  AlignFunctionPointers: false
-  PadOperators: false
-AlignConsecutiveTableGenCondOperatorColons:
-  Enabled: false
-  AcrossEmptyLines: false
-  AcrossComments: false
-  AlignCompound: false
-  AlignFunctionDeclarations: false
-  AlignFunctionPointers: false
-  PadOperators: false
-AlignConsecutiveTableGenDefinitionColons:
-  Enabled: false
-  AcrossEmptyLines: false
-  AcrossComments: false
-  AlignCompound: false
-  AlignFunctionDeclarations: false
-  AlignFunctionPointers: false
-  PadOperators: false
+#AlignConsecutiveTableGenBreakingDAGArgColons:
+#  Enabled: false
+#  AcrossEmptyLines: false
+#  AcrossComments: false
+#  AlignCompound: false
+#  AlignFunctionDeclarations: false
+#  AlignFunctionPointers: false
+#  PadOperators: false
+#AlignConsecutiveTableGenCondOperatorColons:
+#  Enabled: false
+#  AcrossEmptyLines: false
+#  AcrossComments: false
+#  AlignCompound: false
+#  AlignFunctionDeclarations: false
+#  AlignFunctionPointers: false
+#  PadOperators: false
+#AlignConsecutiveTableGenDefinitionColons:
+#  Enabled: false
+#  AcrossEmptyLines: false
+#  AcrossComments: false
+#  AlignCompound: false
+#  AlignFunctionDeclarations: false
+#  AlignFunctionPointers: false
+#  PadOperators: false
 AlignEscapedNewlines: Right
 AlignOperands: Align
 AlignTrailingComments:
@@ -72,24 +72,24 @@ AlignTrailingComments:
   OverEmptyLines: 0
 AllowAllArgumentsOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: true
-AllowBreakBeforeNoexceptSpecifier: Never
+#AllowBreakBeforeNoexceptSpecifier: Never
 AllowShortBlocksOnASingleLine: Never
-AllowShortCaseExpressionOnASingleLine: true
+#AllowShortCaseExpressionOnASingleLine: true
 AllowShortCaseLabelsOnASingleLine: false
-AllowShortCompoundRequirementOnASingleLine: true
+#AllowShortCompoundRequirementOnASingleLine: true
 AllowShortEnumsOnASingleLine: true
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: false
-AllowShortNamespacesOnASingleLine: false
+#AllowShortNamespacesOnASingleLine: false
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
 AttributeMacros:
   - __capability
 BinPackArguments: true
-BinPackLongBracedList: true
-BinPackParameters: BinPack
+#BinPackLongBracedList: true
+#BinPackParameters: BinPack
 BitFieldColonSpacing: Both
 BraceWrapping:
   AfterCaseLabel: false
@@ -110,24 +110,24 @@ BraceWrapping:
   SplitEmptyFunction: true
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
-BracedInitializerIndentWidth: -1
-BreakAdjacentStringLiterals: true
+#BracedInitializerIndentWidth: -1
+#BreakAdjacentStringLiterals: true
 BreakAfterAttributes: Leave
 BreakAfterJavaFieldAnnotations: false
-BreakAfterReturnType: None
+#BreakAfterReturnType: None
 BreakArrays: true
 BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Allman
 BreakBeforeConceptDeclarations: Always
 BreakBeforeInlineASMColon: OnlyMultiline
-BreakBeforeTemplateCloser: false
+#BreakBeforeTemplateCloser: false
 BreakBeforeTernaryOperators: true
-BreakBinaryOperations: Never
+#BreakBinaryOperations: Never
 BreakConstructorInitializers: BeforeColon
-BreakFunctionDefinitionParameters: false
+#BreakFunctionDefinitionParameters: false
 BreakInheritanceList: BeforeColon
 BreakStringLiterals: true
-BreakTemplateDeclarations: MultiLine
+#BreakTemplateDeclarations: MultiLine
 ColumnLimit: 120
 CommentPragmas: "^ IWYU pragma:"
 CompactNamespaces: false
@@ -138,7 +138,7 @@ DerivePointerAlignment: false
 DisableFormat: false
 EmptyLineAfterAccessModifier: Never
 EmptyLineBeforeAccessModifier: LogicalBlock
-EnumTrailingComma: Leave
+#EnumTrailingComma: Leave
 ExperimentalAutoDetectBinPacking: false
 FixNamespaceComments: true
 ForEachMacros:
@@ -166,7 +166,7 @@ IncludeIsMainSourceRegex: ""
 IndentAccessModifiers: false
 IndentCaseBlocks: false
 IndentCaseLabels: false
-IndentExportBlock: true
+#IndentExportBlock: true
 IndentExternBlock: AfterExternBlock
 IndentGotoLabels: true
 IndentPPDirectives: None
@@ -185,16 +185,16 @@ IntegerLiteralSeparator:
   HexMinDigits: 0
 JavaScriptQuotes: Leave
 JavaScriptWrapImports: true
-KeepEmptyLines:
-  AtEndOfFile: false
-  AtStartOfBlock: true
-  AtStartOfFile: true
-KeepFormFeed: false
+#KeepEmptyLines:
+#  AtEndOfFile: false
+#  AtStartOfBlock: true
+#  AtStartOfFile: true
+#KeepFormFeed: false
 LambdaBodyIndentation: Signature
 LineEnding: DeriveLF
 MacroBlockBegin: ""
 MacroBlockEnd: ""
-MainIncludeChar: Quote
+#MainIncludeChar: Quote
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: None
 ObjCBinPackProtocolList: Auto
@@ -202,16 +202,16 @@ ObjCBlockIndentWidth: 2
 ObjCBreakBeforeNestedBlockParam: true
 ObjCSpaceAfterProperty: false
 ObjCSpaceBeforeProtocolList: true
-OneLineFormatOffRegex: ""
+#OneLineFormatOffRegex: ""
 PPIndentWidth: -1
 PackConstructorInitializers: BinPack
 PenaltyBreakAssignment: 2
 PenaltyBreakBeforeFirstCallParameter: 19
-PenaltyBreakBeforeMemberAccess: 150
+#PenaltyBreakBeforeMemberAccess: 150
 PenaltyBreakComment: 300
 PenaltyBreakFirstLessLess: 120
 PenaltyBreakOpenParenthesis: 0
-PenaltyBreakScopeResolution: 500
+#PenaltyBreakScopeResolution: 500
 PenaltyBreakString: 1000
 PenaltyBreakTemplateDeclaration: 10
 PenaltyExcessCharacter: 1000000
@@ -220,24 +220,24 @@ PenaltyReturnTypeOnItsOwnLine: 60
 PointerAlignment: Left
 QualifierAlignment: Leave
 ReferenceAlignment: Pointer
-ReflowComments: Always
+#ReflowComments: Always
 RemoveBracesLLVM: false
-RemoveEmptyLinesInUnwrappedLines: false
+#RemoveEmptyLinesInUnwrappedLines: false
 RemoveParentheses: Leave
 RemoveSemicolon: false
 RequiresClausePosition: OwnLine
 RequiresExpressionIndentation: OuterScope
 SeparateDefinitionBlocks: Leave
 ShortNamespaceLines: 1
-SkipMacroDefinitionBody: false
-SortIncludes:
-  Enabled: true
-  IgnoreCase: false
+#SkipMacroDefinitionBody: false
+SortIncludes: Never
+#  Enabled: true
+#  IgnoreCase: false
 SortJavaStaticImport: Before
 SortUsingDeclarations: LexicographicNumeric
 SpaceAfterCStyleCast: false
 SpaceAfterLogicalNot: false
-SpaceAfterOperatorKeyword: false
+#SpaceAfterOperatorKeyword: false
 SpaceAfterTemplateKeyword: true
 SpaceAroundPointerQualifiers: Default
 SpaceBeforeAssignmentOperators: true
@@ -253,9 +253,9 @@ SpaceBeforeParensOptions:
   AfterFunctionDeclarationName: false
   AfterFunctionDefinitionName: false
   AfterIfMacros: true
-  AfterNot: false
+#  AfterNot: false
   AfterOverloadedOperator: false
-  AfterPlacementOperator: true
+#  AfterPlacementOperator: true
   AfterRequiresInClause: false
   AfterRequiresInExpression: false
   BeforeNonEmptyParentheses: false
@@ -270,7 +270,7 @@ SpacesInLineCommentPrefix:
   Maximum: -1
 SpacesInParens: Never
 SpacesInParensOptions:
-  ExceptDoubleParentheses: false
+#  ExceptDoubleParentheses: false
   InConditionalStatements: false
   InCStyleCasts: false
   InEmptyParentheses: false
@@ -283,7 +283,7 @@ StatementMacros:
   - Q_UNUSED
   - QT_REQUIRE_VERSION
 TabWidth: 4
-TableGenBreakInsideDAGArg: DontBreak
+#TableGenBreakInsideDAGArg: DontBreak
 UseTab: Always
 VerilogBreakBetweenInstancePorts: true
 WhitespaceSensitiveMacros:
@@ -292,4 +292,4 @@ WhitespaceSensitiveMacros:
   - NS_SWIFT_NAME
   - PP_STRINGIZE
   - STRINGIZE
-WrapNamespaceBodyWithEmptyLines: Leave
+#WrapNamespaceBodyWithEmptyLines: Leave
