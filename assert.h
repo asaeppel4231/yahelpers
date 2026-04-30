@@ -35,20 +35,19 @@
  *  @see ASSERT_NO_ABORT
  *  @see ASSERT_NO_TIMESTAMP
  */
-#define ASSERT(cond, opts)                                      \
-    do {                                                        \
-        if (!(cond)) {                                          \
-            if((opts) & ASSERT_NO_TIMESTAMP){                   \
-                LOG_DEBUG("ASSERT " #cond " failed !!!");       \
-            }                                                   \
-            else{                                               \
-                time_t assert_time = time(NULL);                \
+#define ASSERT(cond, opts)                                        \
+    do {                                                          \
+        if (!(cond)) {                                            \
+            if ((opts) & ASSERT_NO_TIMESTAMP) {                   \
+                LOG_DEBUG("ASSERT " #cond " failed !!!");         \
+            } else {                                              \
+                time_t assert_time = time(NULL);                  \
                 LOG_DEBUG("[% ld ] ASSERT " #cond " failed !!!"); \
-            }                                                   \
-            if(!((opts) & ASSERT_NO_ABORT)){                    \
-                abort();                                        \
-            }                                                   \
-        }                                                       \
+            }                                                     \
+            if (!((opts) & ASSERT_NO_ABORT)) {                    \
+                abort();                                          \
+            }                                                     \
+        }                                                         \
     } while (0)
 
 #else
