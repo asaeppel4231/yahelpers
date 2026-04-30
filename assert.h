@@ -12,9 +12,14 @@
 #ifndef ASSERT_H
 #define ASSERT_H
 
+#ifndef NDEBUG
+
 #include "log.h"
 
-#ifndef NDEBUG
+/** @defgroup macros_assertion Assertion macros
+ *  @brief Macros for runtime-assertion.
+ *  @{
+ */
 
 /** @brief Print timestamp of the assert and abort on error */
 #define ASSERT_DEFAULT 0
@@ -49,6 +54,9 @@
             }                                                     \
         }                                                         \
     } while (0)
+
+/** @}
+ */
 
 #else
 
