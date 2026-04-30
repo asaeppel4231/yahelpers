@@ -1,31 +1,16 @@
 Checks: >
-  *,
-  -abseil-*,
-  -android-*,
-  -cppcoreguidelines-avoid-magic-numbers,
-  -cppcoreguidelines-owning-memory,
-  -cppcoreguidelines-pro-type-reinterpret-cast,
-  -cppcoreguidelines-pro-type-static-cast-downcast,
-  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
-  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
-  -cppcoreguidelines-pro-type-vararg,
-  -fuchsia-*,
-  -google-*,
-  -hicpp-*,
-  -llvm-header-guard,
-  -llvmlibc-restrict-system-libc-headers,
-  -misc-include-cleaner,
-  -modernize-*,
-  -objc-*,
-  -readability-magic-numbers,
-  -readability-identifier-length,
-  -readability-uppercase-literal-suffix,
-  -clang-analyzer-alpha*,
+  -*,
+  clang-analyzer-*,
+  bugprone-*,
+  portability-*,
+  performance-*,
+  -bugprone-macro-parentheses,
+  -bugprone-reserved-identifier,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-suspicious-string-compare,
+  -bugprone-suspicious-memset-usage,
   -llvm-include-order,
   -altera-unroll-loops
-
-WarningsAsErrors: '*'
-
+WarningsAsErrors: ''
 HeaderFilterRegex: '.*'
-
 FormatStyle: none

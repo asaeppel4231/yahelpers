@@ -24,7 +24,7 @@
     do {                                              \
         if (!(cond)) {                                \
             LOG_DEBUG("ASSERT " #cond " failed !!!"); \
-            abort() \
+            abort()                                   \
         }                                             \
     } while (0)
 
