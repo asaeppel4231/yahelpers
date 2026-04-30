@@ -75,7 +75,7 @@ int main(void) {
     LOG_DEBUG("Program started");
 
     int x = 5;
-    ASSERT(x == 5);   // will abort with a helpful message if false
+    ASSERT(x == 5, ASSERT_DEFAULT);   // will abort with a helpful message if false
 
     LOG_DEBUG("x = %d", x);
 

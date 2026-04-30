@@ -16,21 +16,48 @@
 
 #ifndef NDEBUG
 
+/** @brief Print timestamp of the assert and abort on error */
+#define ASSERT_DEFAULT 0
+
+/** @brief Specifies whether the assert will abort on error */
+#define ASSERT_NO_ABORT 1
+
+/** @brief Specifies whether the assert will print a timestamp on error */
+#define ASSERT_NO_TIMESTAMP 2
+
 #include <stdlib.h> /* for abort() */
+#include <time.h>
 
 /** @brief Prints a debug message if the condition cond is failed
+ *  @param cond The condition which is checked
+ *  @param opts The option flags
+ *  @see ASSERT_DEFAULT
+ *  @see ASSERT_NO_ABORT
+ *  @see ASSERT_NO_TIMESTAMP
  */
-#define ASSERT(cond)                                  \
-    do {                                              \
-        if (!(cond)) {                                \
-            LOG_DEBUG("ASSERT " #cond " failed !!!"); \
-            abort()                                   \
-        }                                             \
+#define ASSERT(cond, opts)                                      \
+    do {                                                        \
+        if (!(cond)) {                                          \
+            if((opts) & ASSERT_NO_TIMESTAMP){                   \
+                LOG_DEBUG("ASSERT " #cond " failed !!!");       \
+            }                                                   \
+            else{                                               \
+                time_t assert_time = time(NULL);                \
+                LOG_DEBUG("[% ld ] ASSERT " #cond " failed !!!"); \
+            }                                                   \
+            if(!((opts) & ASSERT_NO_ABORT)){                    \
+                abort();                                        \
+            }                                                   \
+        }                                                       \
     } while (0)
 
 #else
 
-#define ASSERT(cond) /* Empty stub macro*/
+#define ASSERT_DEFAULT 0
+#define ASSERT_NO_ABORT 0
+#define ASSERT_NO_TIMESTAMP 0
+
+#define ASSERT(cond, opts) /* Empty stub macro*/
 
 #endif
 
