@@ -16,12 +16,15 @@
 
 #ifndef NDEBUG
 
+#include <stdlib.h> /* for abort() */
+
 /** @brief Prints a debug message if the condition cond is failed
  */
 #define ASSERT(cond)                                  \
     do {                                              \
         if (!(cond)) {                                \
             LOG_DEBUG("ASSERT " #cond " failed !!!"); \
+            abort() \
         }                                             \
     } while (0)
 

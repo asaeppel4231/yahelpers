@@ -5,7 +5,7 @@
 [![CodeQL Advanced](https://github.com/asaeppel4231/yahelpers/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/asaeppel4231/yahelpers/actions/workflows/codeql.yml)
 [![Release](https://github.com/asaeppel4231/yahelpers/actions/workflows/release.yaml/badge.svg)](https://github.com/asaeppel4231/yahelpers/actions/workflows/release.yaml)
 
-Some helper functionality (debug helpers; requires C99) for the ya ecosystem.
+Some helper functionality (debug helpers) for the ya ecosystem.
 
 ## Table of Contents
 
@@ -23,7 +23,7 @@ Some helper functionality (debug helpers; requires C99) for the ya ecosystem.
 
 ## License
 
-This repository is under the MPL-2.0 License, see [LICENSE.md](./LICENSE.md)
+This repository is released under the MPL-2.0 License, see [LICENSE.md](./LICENSE.md)
 
 ## Documentation
 
@@ -32,8 +32,9 @@ The documentation is generated using **Doxygen**.
 - 📘 **HTML Documentation:**
   <https://asaeppel4231.github.io/yahelpers/>
 
-- 📄 **PDF Documentation:**
+<!-- 📄 **PDF Documentation:**
   <https://asaeppel4231.github.io/yahelpers/pdf/yahelpers.pdf>
+-->
 
 ### Building the documentation locally
 
@@ -48,8 +49,8 @@ If you prefer to generate the documentation locally instead of using the online 
 # - texlive-latex-extra
 # - texlive-fonts-recommended
 doxygen Doxyfile
-cd doxygen-doc/latex
-make
+#cd doxygen-doc/latex PDF CURRENTLY NOT SUPPORTED DUE TO BUILD ERRORS
+#make
 ```
 
 ---
