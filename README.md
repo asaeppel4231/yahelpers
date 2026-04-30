@@ -12,6 +12,7 @@ Some helper functionality for the ya ecosystem.
 - [License](#license)
 - [Features](#features)
 - [ya‑ ecosystem](#ya--ecosystem)
+- [Further Information](#further-information)
 
 ## License
 
