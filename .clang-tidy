@@ -12,5 +12,5 @@ Checks: >
   -llvm-include-order,
   -altera-unroll-loops
 WarningsAsErrors: ''
-HeaderFilterRegex: '.*'
+HeaderFilterRegex: '^(?!tests/)'
 FormatStyle: none

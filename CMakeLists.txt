@@ -3,8 +3,16 @@ project(yahelpers VERSION 0.1 LANGUAGES C)
 
 include(GNUInstallDirs)
 
+option(YAHELPERS_BUILD_TESTS "Build tests for yahelpers" OFF)
+
+# Debug-Build → Tests activated
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(YAHELPERS_BUILD_TESTS ON)
+endif()
+
 # Header-only library
 add_library(yahelpers INTERFACE)
+
 target_include_directories(yahelpers INTERFACE
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/ya-ecosystem/helpers>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
@@ -59,3 +67,8 @@ configure_file(
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/yahelpers.pc
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
 )
+
+if(YAHELPERS_BUILD_TESTS)
+include(CTest)
+add_subdirectory(tests)
+endif()

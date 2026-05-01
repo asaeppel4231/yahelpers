@@ -1,0 +1,19 @@
+# Standard: Spaces für alles außer Makefiles
+[*]
+indent_style = space
+indent_size = 4
+
+# Makefile und Makefile.am brauchen TABS
+[Makefile]
+indent_style = tab
+
+[Makefile.am]
+indent_style = tab
+
+# Auch Makefile.in (generiert) nicht anfassen
+[Makefile.in]
+indent_style = tab
+
+# Tests/Makefile.am ebenfalls Tabs
+[tests/Makefile.am]
+indent_style = tab

@@ -1,5 +1,11 @@
 project('yahelpers', 'c', version: '0.1')
 
+# Tests are only in the debug build activated (by default)
+tests_opt = get_option('tests')
+if get_option('buildtype') == 'debug'
+    tests_opt = true
+endif
+
 install_headers(
     ['assert.h', 'log.h', 'logconstants.h'],
     subdir: 'ya-ecosystem/helpers'
@@ -13,3 +19,7 @@ pkg.generate(
     version: meson.project_version(),
     subdirs: 'ya-ecosystem/helpers'
 )
+
+if tests_opt
+    subdir('tests')
+endif

@@ -30,8 +30,13 @@
 /** @brief Specifies whether the assert will print a timestamp on error */
 #define ASSERT_NO_TIMESTAMP 2
 
+/** @brief Specifies whether the assert is CMocka-compatible */
+#define ASSERT_FOR_TESTS 4
+
 #include <stdlib.h> /* for abort() */
 #include <time.h>
+
+#include <assert.h>
 
 /** @brief Prints a debug message if the condition cond is failed
  *  @param cond The condition which is checked
@@ -39,6 +44,7 @@
  *  @see ASSERT_DEFAULT
  *  @see ASSERT_NO_ABORT
  *  @see ASSERT_NO_TIMESTAMP
+ *  @see ASSERT_FOR_TESTS
  */
 #define ASSERT(cond, opts)                                        \
     do {                                                          \
@@ -49,7 +55,9 @@
                 time_t assert_time = time(NULL);                  \
                 LOG_DEBUG("[% ld ] ASSERT " #cond " failed !!!"); \
             }                                                     \
-            if (!((opts) & ASSERT_NO_ABORT)) {                    \
+            if ((opts) & ASSERT_FOR_TESTS) {                      \
+                assert((cond));                                   \
+            } else if (!((opts) & ASSERT_NO_ABORT)) {             \
                 abort();                                          \
             }                                                     \
         }                                                         \
