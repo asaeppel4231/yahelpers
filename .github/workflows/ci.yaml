@@ -11,40 +11,120 @@ permissions:
   contents: read
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Linux: alle Buildsysteme
+          - os: ubuntu-latest
+            system: autotools
+          - os: ubuntu-latest
+            system: cmake
+          - os: ubuntu-latest
+            system: meson
+
+          # macOS: CMake + Meson
+          - os: macos-latest
+            system: cmake
+          - os: macos-latest
+            system: meson
+
+          # Windows: CMake + Meson
+          - os: windows-latest
+            system: cmake
+          - os: windows-latest
+            system: meson
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install dependencies
+      # ---------------------------------------------------------
+      # Install dependencies
+      # ---------------------------------------------------------
+
+      - name: Install dependencies (Linux)
+        if: runner.os == 'Linux'
         run: |
-          sudo apt update
-          sudo apt install -y \
+          sudo apt-get update
+          sudo apt-get install -y \
             build-essential \
             cmake \
             meson \
             ninja-build \
-            autoconf automake libtool pkg-config
+            autoconf automake libtool \
+            pkg-config \
+            libcmocka-dev
 
-      # --- CMake Build ---
-      - name: Build with CMake
+      - name: Install dependencies (macOS)
+        if: runner.os == 'macOS'
         run: |
-          mkdir build-cmake
-          cd build-cmake
-          cmake ..
-          make -j$(nproc)
+          brew update
+          brew install cmake meson ninja pkg-config cmocka
 
-      # --- Meson Build ---
-      - name: Build with Meson
+      - name: Install dependencies (Windows)
+        if: runner.os == 'Windows'
         run: |
-          meson setup build-meson
-          meson compile -C build-meson
+          choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+          pip install meson ninja
+          vcpkg install cmocka:x64-windows
 
-      # --- Autotools Build ---
-      - name: Build with Autotools
+      # ---------------------------------------------------------
+      # Build phase
+      # ---------------------------------------------------------
+
+      - name: Build (Autotools)
+        if: matrix.system == 'autotools'
         run: |
-          autoreconf --install
-          ./configure
-          make -j$(nproc)
+          autoreconf -fi
+          ./configure --enable-tests
+          make -j
+
+      - name: Build (CMake)
+        if: matrix.system == 'cmake'
+        run: |
+          cmake -S . -B build -G Ninja -DYAHELPERS_BUILD_TESTS=ON
+          cmake --build build
+
+      - name: Build (Meson)
+        if: matrix.system == 'meson'
+        run: |
+          meson setup build
+          meson compile -C build
+
+      # ---------------------------------------------------------
+      # Install phase
+      # ---------------------------------------------------------
+
+      - name: Install (Autotools)
+        if: matrix.system == 'autotools'
+        run: sudo make install
+
+      - name: Install (CMake)
+        if: matrix.system == 'cmake'
+        run: sudo cmake --install build
+
+      - name: Install (Meson)
+        if: matrix.system == 'meson'
+        run: sudo meson install -C build
+
+      # ---------------------------------------------------------
+      # Test phase
+      # ---------------------------------------------------------
+
+      - name: Test (Autotools)
+        if: matrix.system == 'autotools'
+        run: make check
+
+      - name: Test (CMake)
+        if: matrix.system == 'cmake'
+        run: |
+          cd build
+          ctest --output-on-failure
+
+      - name: Test (Meson)
+        if: matrix.system == 'meson'
+        run: |
+          meson test -C build --print-errorlogs
