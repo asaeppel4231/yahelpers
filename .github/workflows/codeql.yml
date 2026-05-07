@@ -41,7 +41,7 @@ jobs:
 
     strategy:
       fail-fast: false
-    matrix:
+      matrix:
       include:
         - language: c-cpp
           packs: github/codeql/actions
